@@ -1,0 +1,14 @@
+name: eslint-check
+ 
+on:
+  push:
+    branches:
+      - master 
+ 
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Eslint checking
+        run: make lint
