@@ -8,5 +8,4 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-      - name: Eslint checking
       - run: make lint
