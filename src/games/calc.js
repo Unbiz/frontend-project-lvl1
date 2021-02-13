@@ -1,34 +1,31 @@
 import { getRandomNumber } from '../util.js';
-import startGame from '../index.js';
 
 const phrase = 'What is the result of the expression?';
 
-const calc = () => {
+const typeList = {
+  0: {
+    operator: '+',
+    fn: (numberOne, numberTwo) => numberOne + numberTwo,
+  },
+  1: {
+    operator: '-',
+    fn: (numberOne, numberTwo) => numberOne - numberTwo,
+  },
+  2: {
+    operator: '*',
+    fn: (numberOne, numberTwo) => numberOne * numberTwo,
+  },
+};
+
+const game = () => {
   const numberOne = getRandomNumber(0, 99);
   const numberTwo = getRandomNumber(0, 99);
-  let question = '';
-  let correctAnswer = null;
-
   const typeOfOperation = getRandomNumber(0, 2);
 
-  switch (typeOfOperation) {
-    case 0:
-      question = `${numberOne} + ${numberTwo}`;
-      correctAnswer = `${numberOne + numberTwo}`;
-      break;
-    case 1:
-      question = `${numberOne} - ${numberTwo}`;
-      correctAnswer = `${numberOne - numberTwo}`;
-      break;
-    case 2:
-      question = `${numberOne} * ${numberTwo}`;
-      correctAnswer = `${numberOne * numberTwo}`;
-      break;
-    default:
-      break;
-  }
+  const question = `${numberOne} ${typeList[typeOfOperation].operator} ${numberTwo}`;
+  const correctAnswer = `${typeList[typeOfOperation].fn(numberOne, numberTwo)}`;
 
   return { question, correctAnswer };
 };
 
-export default () => startGame(calc, phrase);
+export default { game, phrase };

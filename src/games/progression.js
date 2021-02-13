@@ -1,9 +1,8 @@
 import { getRandomNumber } from '../util.js';
-import startGame from '../index.js';
 
 const phrase = 'What number is missing in the progression?';
 
-const progression = () => {
+const game = () => {
   const progressionLength = 10;
   const progressionStartNumber = getRandomNumber(0, 99);
   const progressionNumber = getRandomNumber(0, 9);
@@ -25,4 +24,4 @@ const progression = () => {
   return { question, correctAnswer };
 };
 
-export default () => startGame(progression, phrase);
+export default { game, phrase };

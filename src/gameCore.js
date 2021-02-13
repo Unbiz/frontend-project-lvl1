@@ -1,26 +1,27 @@
 import readlineSynk from 'readline-sync';
+import getUserName from './userName.js';
 
-const gameCore = (gameData, phrase) => {
+const gameCore = (gameData, userName = getUserName()) => {
   let countCorrectAnswer = 0;
-  const userName = getUserName();
-  console.log(phrase);
+  const { phrase } = gameData;
+  console.log(`${phrase}\n`);
 
   while (countCorrectAnswer < 3) {
-    const { question, correctAnswer } = gameData();
-    console.log(`Question: ${question}`);
+    const { correctAnswer, question } = gameData.game();
+    console.log(`Question: ${question}\n`);
     const userAnswer = readlineSynk.question('Your answer: ');
     if (userAnswer === correctAnswer) {
-      console.log('Correct!');
+      console.log('Correct!\n');
       countCorrectAnswer += 1;
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\n`);
+      console.log(`Let's try again, ${userName}!\n`);
       break;
     }
   }
 
   if (countCorrectAnswer === 3) {
-    console.log(`Congratulations, ${userName}!`);
+    console.log(`Congratulations, ${userName}!\n`);
   }
 };
 
