@@ -15,4 +15,4 @@ const isPrime = (number) => {
   return true;
 };
 
-export { getRandomNumber, isEven, isPrime};
+export { getRandomNumber, isEven, isPrime };
