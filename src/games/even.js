@@ -5,7 +5,7 @@ const phrase = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const even = () => {
   const question = getRandomNumber(0, 99);
-  const correctAnswer = isEven(question);
+  const correctAnswer = isEven(question) ? 'yes' : 'no';
 
   return { question, correctAnswer };
 };

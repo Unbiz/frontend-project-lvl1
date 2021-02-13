@@ -1,15 +1,6 @@
 import readlineSynk from 'readline-sync';
-import getUserName from './cli.js';
 
-const getUserName = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSynk.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-
-  return name;
-};
-
-const startGame = (gameData, phrase) => {
+const gameCore = (gameData, phrase) => {
   let countCorrectAnswer = 0;
   const userName = getUserName();
   console.log(phrase);
@@ -33,4 +24,4 @@ const startGame = (gameData, phrase) => {
   }
 };
 
-export default startGame;
+export default gameCore;
